@@ -71,7 +71,9 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 
 ## AsyncStorage
 
-### Structure
+### Decks AsyncStorage Structure
+
+- key: 'MobileFlashCards:decks'
 
 <pre>
 {
@@ -99,6 +101,11 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
   }
 }
 </pre>
+
+### Notifications AsyncStorage Structure
+
+- key: 'MobileFlashCards:notifications'
+- stores true or null
 
 ## Redux
 
