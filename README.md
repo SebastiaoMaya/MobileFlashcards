@@ -21,7 +21,7 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 - Shows the title of the deck and the number of cards in it
 - Add Card button navigates to the [AddCard](#addcard) component
 - Start Quiz button navigates to [Quiz](#quiz) component
-- Delete Text button (TextButton component) deletes the deck and navigates to the [DeckList](#decklist) component
+- Delete Text button ([TextButton](#textbutton) component) deletes the deck and navigates to the [DeckList](#decklist) component
 
 ### AddCard
 
@@ -38,15 +38,24 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 ### Quiz
 
 - Question number
-- Text that contains either the question or the answer
+- [Card](#card) component
 - Correct and incorrect buttons
 - If all questions answered then navigate to [Score](#score) component
+
+### Card
+
+- displays the question or answer text
+- [TextButton](#textbutton) to cycle between question or answer
 
 ### Score
 
 - Shows score (correct answers / total questions)
 - Restart quiz button that navigates to [Quiz](#quiz)
 - Back to Deck button that navigates to [DeckDetails](#deckdetails)
+
+### TextButton
+
+- creates a text button with the onPress and text passed to it
 
 ## Navigators
 
@@ -63,3 +72,13 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 ## AsyncStorage
 
 ## Redux
+
+### Actions
+
+- ADD_DECK - adds deck to the store
+- ADD_CARD_TO_DECK - adds card to the deck
+- DELETE_DECK - deletes deck from the store
+
+### Reducers
+
+- only one reducer to manage the decks
