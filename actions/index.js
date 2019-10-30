@@ -5,7 +5,7 @@ export const ADD_CARD_TO_DECK = 'ADD_CARD_TO_DECK';
 
 export const receiveDecks = decks => ({
   type: RECEIVE_DECKS,
-  entries
+  decks
 });
 
 export const addDeck = deck => ({

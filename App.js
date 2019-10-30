@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { setDummyDecks } from './utils/api';
+import { StyleSheet, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import DeckList from './components/deck/DeckList';
+import middleware from './middleware';
+import reducer from './reducers';
+import { setLocalNotification } from './utils/api';
 
 export default class App extends Component {
   componentDidMount() {
-    setDummyDecks();
+    setLocalNotification();
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Provider store={createStore(reducer, middleware)}>
+        <View style={styles.container}>
+          <DeckList />
+        </View>
+      </Provider>
     );
   }
 }

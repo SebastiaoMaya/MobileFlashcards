@@ -8,7 +8,7 @@ export const NOTIFICATIONS_KEY = 'MobileFlashCards:notifications';
 
 //Deck storage functions
 
-export function setDummyDecks() {
+function setDummyData() {
   const dummyData = {
     React: {
       title: 'React',
@@ -36,10 +36,16 @@ export function setDummyDecks() {
   };
 
   AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(dummyData));
+
+  return dummyData;
 }
 
 export function fetchDecks() {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(formatCalendarResults);
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(parseFetchDecksResults);
+}
+
+function parseFetchDecksResults(results) {
+  return results === null ? setDummyData() : JSON.parse(results);
 }
 
 export function submitDeck({ deck, key }) {
@@ -86,7 +92,7 @@ function createNotification() {
 }
 
 export function setLocalNotification() {
-  AsyncStorage.getItem(NOTIFICATION_KEY)
+  AsyncStorage.getItem(NOTIFICATIONS_KEY)
     .then(JSON.parse)
     .then(data => {
       if (data === null) {
@@ -108,7 +114,7 @@ export function setLocalNotification() {
               repeat: 'day'
             });
 
-            AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
+            AsyncStorage.setItem(NOTIFICATIONS_KEY, JSON.stringify(true));
           }
         });
       }

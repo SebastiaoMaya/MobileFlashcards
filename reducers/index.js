@@ -10,12 +10,12 @@ const entries = (state = {}, action) => {
     case RECEIVE_DECKS:
       return {
         ...state,
-        ...action.entries
+        ...action.decks
       };
     case ADD_DECK:
       return {
         ...state,
-        ...action.entry
+        ...action.deck
       };
     case DELETE_DECK:
       return Object.keys(state)
