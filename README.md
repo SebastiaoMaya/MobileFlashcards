@@ -114,6 +114,7 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 - ADD_DECK - adds deck to the store
 - ADD_CARD_TO_DECK - adds card to the deck
 - DELETE_DECK - deletes deck from the store
+- RECEIVE_DECKS
 
 ### Reducers
 
