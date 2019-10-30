@@ -4,8 +4,8 @@ export function getHoursAndMinutesFromString(timeString) {
   //default value 20h00
   if (splittedTime && splittedTime.length !== 2) {
     return {
-      hours: 20,
-      minutes: 00
+      hours: parseInt('20'),
+      minutes: parseInt('00')
     };
   }
 
