@@ -13,12 +13,16 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 
 ### DeckList
 
-- Lists all the decks
+- Lists all the decks ([DeckInfo](#deckinfo) components)
 - Each deck is a button that navigates to the [DeckDetails](#deckdetails) component
+
+### DeckInfo
+
+- Component that displays the deck title and number of questions
 
 ### DeckDetails
 
-- Shows the title of the deck and the number of cards in it
+- Shows [DeckInfo](#deckinfo) component
 - Add Card button navigates to the [AddCard](#addcard) component
 - Start Quiz button navigates to [Quiz](#quiz) component
 - Delete Text button ([TextButton](#textbutton) component) deletes the deck and navigates to the [DeckList](#decklist) component

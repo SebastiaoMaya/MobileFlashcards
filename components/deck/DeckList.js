@@ -1,13 +1,27 @@
 import { AppLoading } from 'expo';
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { receiveDecks } from '../../actions';
 import { fetchDecks } from '../../utils/api';
+import DeckInfo from './DeckInfo';
 
 class DeckList extends Component {
   state = {
     ready: false
+  };
+
+  renderItem = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={this.navigateToDeck}>
+        <DeckInfo key={item.title} {...item} />
+      </TouchableOpacity>
+    );
+  };
+
+  navigateToDeck = () => {
+    console.log('clicked');
   };
 
   componentDidMount() {
@@ -21,6 +35,7 @@ class DeckList extends Component {
         }))
       );
   }
+
   render() {
     const { ready } = this.state;
 
@@ -28,12 +43,27 @@ class DeckList extends Component {
       return <AppLoading />;
     }
 
+    const { decks } = this.props;
+    const deckArray = Object.keys(decks).map(function(key) {
+      return { key: key, ...decks[key] };
+    });
     return (
-      <View>
-        <Text> textInComponent </Text>
+      <View style={styles.container}>
+        <FlatList data={deckArray} renderItem={this.renderItem} />
       </View>
     );
   }
 }
 
-export default connect()(DeckList);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
+  }
+});
+
+const mapStateToProps = decks => ({
+  decks
+});
+
+export default connect(mapStateToProps)(DeckList);
