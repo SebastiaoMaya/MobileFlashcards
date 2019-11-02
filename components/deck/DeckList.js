@@ -1,7 +1,7 @@
 import { AppLoading } from 'expo';
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { receiveDecks } from '../../actions';
 import { fetchDecks } from '../../utils/api';
@@ -14,14 +14,14 @@ class DeckList extends Component {
 
   renderItem = ({ item }) => {
     return (
-      <TouchableOpacity onPress={this.navigateToDeck}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          this.props.navigation.navigate('DeckDetails', { key: item.title });
+        }}
+      >
         <DeckInfo key={item.title} {...item} />
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
     );
-  };
-
-  navigateToDeck = () => {
-    console.log('clicked');
   };
 
   componentDidMount() {

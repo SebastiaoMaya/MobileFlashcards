@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { StatusBar, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import DeckList from './components/deck/DeckList';
+import Navigator from './components/navigators/Navigator';
 import middleware from './middleware';
 import reducer from './reducers';
 import { setLocalNotification } from './utils/api';
@@ -30,7 +30,7 @@ export default class App extends Component {
             backgroundColor={gray}
             barStyle='light-content'
           />
-          <DeckList />
+          <Navigator />
         </View>
       </Provider>
     );

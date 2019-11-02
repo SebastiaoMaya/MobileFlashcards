@@ -1,25 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { gray } from '../../utils/colors';
+import { lightBlue } from '../../utils/colors';
+import * as Constants from '../../utils/constants';
 
 const DeckInfo = ({ title, questions }) => {
   return (
     <View style={styles.item}>
       <Text style={styles.title}> {title} </Text>
-      <Text style={styles.title}> {questions.length} </Text>
+      <Text style={styles.subtitle}>
+        {Constants.NUMBER_OF_CARDS + questions.length}
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: gray,
-    padding: 20,
+    padding: 10,
     marginVertical: 8,
-    marginHorizontal: 16
+    marginHorizontal: 8,
+    borderBottomWidth: 1,
+    borderColor: lightBlue
   },
   title: {
     fontSize: 32
+  },
+  subtitle: {
+    fontSize: 13
   }
 });
 

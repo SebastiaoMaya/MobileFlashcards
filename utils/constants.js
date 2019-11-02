@@ -6,3 +6,6 @@ export const NOTIFICATION_TIME = '20h00';
 
 //Permissions status
 export const PERMISSION_GRANTED = 'granted';
+
+//Deck Info
+export const NUMBER_OF_CARDS = 'Number of cards: ';
