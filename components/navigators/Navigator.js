@@ -63,63 +63,38 @@ const TabNavigator = createPlatformNavigation()(
   }
 );
 
-const DeckListStackNavigator = createStackNavigator(
+const DashboardStackNavigator = createStackNavigator(
   {
     DeckList: {
       screen: DeckList
     },
     DeckDetails: {
-      screen: DeckDetails
+      screen: DeckDetails,
+      navigationOptions: {
+        headerTitle: 'Deck Details'
+      }
     },
     AddCard: {
-      screen: AddCard
+      screen: AddCard,
+      navigationOptions: {
+        headerTitle: 'Add Card'
+      }
     },
     Quiz: {
-      screen: Quiz
+      screen: Quiz,
+      navigationOptions: {
+        headerTitle: 'Quiz'
+      }
     },
     Score: {
-      screen: Score
-    }
-  },
-  {
-    headerMode: 'none',
-    navigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state.routes[navigation.state.index];
-
-      return {
-        headerTitle: routeName.split(/(?=[A-Z])/).join(' '),
-        headerVisible: false
-      };
-    }
-  }
-);
-
-const AddDeckStackNavigator = createStackNavigator(
-  {
+      screen: Score,
+      navigationOptions: {
+        headerTitle: 'Score'
+      }
+    },
     AddDeck: {
       screen: AddDeck
     },
-    DeckListStackNavigator: {
-      screen: DeckList
-    }
-  },
-  {
-    headerMode: 'none',
-    navigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state.routes[navigation.state.index];
-
-      return {
-        headerTitle: routeName.split(/(?=[A-Z])/).join(' '),
-        headerVisible: false
-      };
-    }
-  }
-);
-
-const DashboardStackNavigator = createStackNavigator(
-  {
-    DeckListStackNavigator,
-    AddDeckStackNavigator,
     TabNavigator: {
       screen: TabNavigator
     }

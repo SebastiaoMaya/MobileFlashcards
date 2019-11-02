@@ -9,3 +9,7 @@ export const PERMISSION_GRANTED = 'granted';
 
 //Deck Info
 export const NUMBER_OF_CARDS = 'Number of cards: ';
+
+//Deck Details
+export const ADD_CARD = 'Add Card';
+export const START_QUIZ = 'Start Quiz';

@@ -1,17 +1,68 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
+import { lightBlue, white } from '../../utils/colors';
+import * as Constants from '../../utils/constants';
+import TextButton from '../textbutton/TextButton';
+import DeckInfo from './DeckInfo';
 
 class DeckDetails extends Component {
+  deleteDeck = () => {
+    console.log('deleted');
+  };
+
   render() {
     const { deck } = this.props;
     return (
-      <View>
-        <Text> {deck.title} </Text>
+      <View style={{ flex: 1 }}>
+        <DeckInfo {...deck} />
+        <View style={{ flex: 1, alignItems: 'center', paddingTop: 50 }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('AddCard', {
+                key: deck.title
+              });
+            }}
+            style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
+          >
+            <Text>{Constants.ADD_CARD}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate('Quiz', { key: deck.title });
+            }}
+            style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
+          >
+            <Text>{Constants.START_QUIZ}</Text>
+          </TouchableOpacity>
+          <TextButton onPress={this.deleteDeck} style={{ padding: 10 }}>
+            Delete
+          </TextButton>
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  androidBtn: {
+    margin: 5,
+    backgroundColor: lightBlue,
+    padding: 10,
+    borderRadius: 2
+  },
+  iosBtn: {
+    backgroundColor: white,
+    borderColor: lightBlue,
+    borderWidth: 1,
+    borderRadius: 3,
+    padding: 5,
+    paddingLeft: 25,
+    paddingRight: 25,
+    margin: 5
+  }
+});
 
 const mapStateToProps = (state, { navigation }) => {
   const { key } = navigation.state.params;

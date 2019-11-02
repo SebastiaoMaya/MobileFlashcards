@@ -5,6 +5,7 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { receiveDecks } from '../../actions';
 import { fetchDecks } from '../../utils/api';
+import { lightBlue } from '../../utils/colors';
 import DeckInfo from './DeckInfo';
 
 class DeckList extends Component {
@@ -18,6 +19,7 @@ class DeckList extends Component {
         onPress={() => {
           this.props.navigation.navigate('DeckDetails', { key: item.title });
         }}
+        style={styles.deckBtn}
       >
         <DeckInfo key={item.title} {...item} />
       </TouchableWithoutFeedback>
@@ -59,6 +61,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
+  },
+  deckBtn: {
+    borderBottomWidth: 1,
+    borderColor: lightBlue,
+    marginHorizontal: 16
   }
 });
 

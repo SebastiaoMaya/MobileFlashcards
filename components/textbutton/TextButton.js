@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { lightBlue } from '../../utils/colors';
 
-export default class TextButton extends Component {
-  render() {
-    return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
-    );
+const TextButton = ({ children, onPress, style = {} }) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <Text style={[styles.reset, style]}>{children}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  reset: {
+    textAlign: 'center',
+    color: lightBlue
   }
-}
+});
+
+export default TextButton;

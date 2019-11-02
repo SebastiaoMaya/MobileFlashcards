@@ -7,7 +7,7 @@ import Navigator from './components/navigators/Navigator';
 import middleware from './middleware';
 import reducer from './reducers';
 import { setLocalNotification } from './utils/api';
-import { gray } from './utils/colors';
+import { lightBlue } from './utils/colors';
 
 const MobileFlashCardsStatusBar = ({ backgroundColor, ...props }) => {
   return (
@@ -27,7 +27,7 @@ export default class App extends Component {
       <Provider store={createStore(reducer, middleware)}>
         <View style={{ flex: 1 }}>
           <MobileFlashCardsStatusBar
-            backgroundColor={gray}
+            backgroundColor={lightBlue}
             barStyle='light-content'
           />
           <Navigator />

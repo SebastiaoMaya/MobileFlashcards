@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { lightBlue } from '../../utils/colors';
+import { gray } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
 
 const DeckInfo = ({ title, questions }) => {
@@ -18,15 +18,14 @@ const styles = StyleSheet.create({
   item: {
     padding: 10,
     marginVertical: 8,
-    marginHorizontal: 8,
-    borderBottomWidth: 1,
-    borderColor: lightBlue
+    marginHorizontal: 8
   },
   title: {
     fontSize: 32
   },
   subtitle: {
-    fontSize: 13
+    fontSize: 13,
+    color: gray
   }
 });
 
