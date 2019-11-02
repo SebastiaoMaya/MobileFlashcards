@@ -5,6 +5,7 @@ import { addDeck } from '../../actions';
 import { submitDeck } from '../../utils/api';
 import { lightBlue, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
+import NavigateButton from '../buttons/NavigateButton';
 import SubmitButton from '../buttons/SubmitButton';
 
 class AddDeck extends Component {
@@ -56,8 +57,14 @@ class AddDeck extends Component {
             style={styles.textInput}
           />
           <SubmitButton onPress={this.submit} disabled={deckName === ''}>
-            {Constants.ADD_DECK}
+            {Constants.CREATE_DECK}
           </SubmitButton>
+          <NavigateButton
+            navigation={this.props.navigation}
+            navigateScreen={'DeckList'}
+          >
+            {Constants.BACK_TO_DECK_LIST}
+          </NavigateButton>
         </View>
       </View>
     );

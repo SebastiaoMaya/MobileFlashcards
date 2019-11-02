@@ -20,7 +20,8 @@ export const ADD_A_CARD = 'Please fill in the following values:';
 
 //Add Deck
 export const ADD_A_DECK = 'Please fill with the deck title';
-export const ADD_DECK = 'Add Deck';
+export const CREATE_DECK = 'Create Deck';
+export const BACK_TO_DECK_LIST = 'Back to Deck list';
 
 //Quiz
 export const SHOW_ANSWER = 'Show Answer';

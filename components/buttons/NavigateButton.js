@@ -6,7 +6,7 @@ const NavigateButton = ({
   navigation,
   children,
   navigateScreen,
-  navigateParams
+  navigateParams = {}
 }) => {
   return (
     <TouchableOpacity
@@ -31,11 +31,8 @@ const styles = StyleSheet.create({
   androidBtn: {
     backgroundColor: lightBlue,
     padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
     height: 45,
     borderRadius: 2,
-    alignSelf: 'flex-end',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5
