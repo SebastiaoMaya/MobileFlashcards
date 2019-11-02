@@ -13,3 +13,6 @@ export const NUMBER_OF_CARDS = 'Number of cards: ';
 //Deck Details
 export const ADD_CARD = 'Add Card';
 export const START_QUIZ = 'Start Quiz';
+
+//Add Card
+export const ADD_A_CARD = 'Please fill in the following values:';

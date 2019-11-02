@@ -26,7 +26,7 @@ class DeckDetails extends Component {
             }}
             style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
           >
-            <Text>{Constants.ADD_CARD}</Text>
+            <Text style={styles.btnText}>{Constants.ADD_CARD}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -34,7 +34,7 @@ class DeckDetails extends Component {
             }}
             style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
           >
-            <Text>{Constants.START_QUIZ}</Text>
+            <Text style={styles.btnText}>{Constants.START_QUIZ}</Text>
           </TouchableOpacity>
           <TextButton onPress={this.deleteDeck} style={{ padding: 10 }}>
             Delete
@@ -46,21 +46,29 @@ class DeckDetails extends Component {
 }
 
 const styles = StyleSheet.create({
-  androidBtn: {
-    margin: 5,
+  iosBtn: {
     backgroundColor: lightBlue,
     padding: 10,
-    borderRadius: 2
-  },
-  iosBtn: {
-    backgroundColor: white,
-    borderColor: lightBlue,
-    borderWidth: 1,
-    borderRadius: 3,
-    padding: 5,
-    paddingLeft: 25,
-    paddingRight: 25,
+    borderRadius: 7,
+    height: 45,
     margin: 5
+  },
+  androidBtn: {
+    backgroundColor: lightBlue,
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderRadius: 2,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5
+  },
+  btnText: {
+    color: white,
+    fontSize: 16,
+    textAlign: 'center'
   }
 });
 
