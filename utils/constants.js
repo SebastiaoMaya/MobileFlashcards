@@ -28,6 +28,7 @@ export const SHOW_ANSWER = 'Show Answer';
 export const SHOW_QUESTION = 'Show Question';
 export const CORRECT = 'Correct';
 export const INCORRECT = 'Incorrect';
+export const QUESTION_NUMBER = 'Question #';
 
 //Score
 export const RESTART = 'Restart';

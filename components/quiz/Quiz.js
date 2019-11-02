@@ -15,7 +15,8 @@ import Card from '../card/Card';
 class Quiz extends Component {
   state = {
     questionNumber: 0,
-    numCorrect: 0
+    numCorrect: 0,
+    showAnswer: false
   };
 
   submitCorrectAnswer = () => {
@@ -27,14 +28,16 @@ class Quiz extends Component {
 
     if (newQuestionNumber >= deck.questions.length) {
       this.setState({
-        numCorrect: numCorrectAnswers
+        numCorrect: numCorrectAnswers,
+        showAnswer: false
       });
 
       this.toScore(numCorrectAnswers);
     } else {
       this.setState({
         questionNumber: newQuestionNumber,
-        numCorrect: numCorrectAnswers
+        numCorrect: numCorrectAnswers,
+        showAnswer: false
       });
     }
   };
@@ -46,10 +49,14 @@ class Quiz extends Component {
     const newQuestionNumber = questionNumber + 1;
 
     if (newQuestionNumber >= deck.questions.length) {
+      this.setState({
+        showAnswer: false
+      });
       this.toScore(numCorrect);
     } else {
       this.setState(() => ({
-        questionNumber: newQuestionNumber
+        questionNumber: newQuestionNumber,
+        showAnswer: false
       }));
     }
   };
@@ -68,14 +75,24 @@ class Quiz extends Component {
   };
 
   render() {
-    const { question, answer } = this.props.deck.questions[
-      this.state.questionNumber
-    ];
+    const { questionNumber, showAnswer } = this.state;
+    const { question, answer } = this.props.deck.questions[questionNumber];
 
     return (
       <View>
         <View style={styles.item}>
-          <Card question={question} answer={answer} />
+          <Card
+            question={question}
+            answer={answer}
+            questionNumber={questionNumber + 1}
+            onPressShowAnswer={() => {
+              this.setState({ showAnswer: true });
+            }}
+            onPressShowQuestion={() => {
+              this.setState({ showAnswer: false });
+            }}
+            showAnswer={showAnswer}
+          />
         </View>
         <View style={styles.btnContainer}>
           <TouchableOpacity
