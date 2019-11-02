@@ -6,7 +6,8 @@ const NavigateButton = ({
   navigation,
   children,
   navigateScreen,
-  navigateParams = {}
+  navigateParams = {},
+  disabled = false
 }) => {
   return (
     <TouchableOpacity
@@ -14,6 +15,7 @@ const NavigateButton = ({
         navigation.navigate(navigateScreen, navigateParams);
       }}
       style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
+      disabled={disabled}
     >
       <Text style={styles.btnText}>{children}</Text>
     </TouchableOpacity>

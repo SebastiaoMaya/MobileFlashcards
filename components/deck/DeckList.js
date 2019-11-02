@@ -1,11 +1,9 @@
 import { AppLoading } from 'expo';
 import React, { Component } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { receiveDecks } from '../../actions';
 import { fetchDecks } from '../../utils/api';
-import { lightBlue } from '../../utils/colors';
 import DeckInfo from './DeckInfo';
 
 class DeckList extends Component {
@@ -15,14 +13,13 @@ class DeckList extends Component {
 
   renderItem = ({ item }) => {
     return (
-      <TouchableWithoutFeedback
-        onPress={() => {
-          this.props.navigation.navigate('DeckDetails', { key: item.title });
-        }}
-        style={styles.deckBtn}
-      >
-        <DeckInfo key={item.title} {...item} />
-      </TouchableWithoutFeedback>
+      <DeckInfo
+        key={item.title}
+        bounceValue={this.state.bounceValue}
+        navigation={this.props.navigation}
+        actAsBtn={true}
+        {...item}
+      />
     );
   };
 
@@ -61,11 +58,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
-  },
-  deckBtn: {
-    borderBottomWidth: 1,
-    borderColor: lightBlue,
-    marginHorizontal: 16
   }
 });
 

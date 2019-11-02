@@ -48,6 +48,7 @@ class DeckDetails extends Component {
             navigateParams={{
               key: deck.title
             }}
+            disabled={deck.questions.length === 0}
           >
             {Constants.START_QUIZ}
           </NavigateButton>
