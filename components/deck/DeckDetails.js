@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { deleteDeck } from '../../actions';
 import { removeDeck } from '../../utils/api';
 import { lightBlue, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
-import TextButton from '../textbutton/TextButton';
+import NavigateButton from '../buttons/NavigateButton';
+import TextButton from '../buttons/TextButton';
 import DeckInfo from './DeckInfo';
 
 class DeckDetails extends Component {
@@ -33,25 +33,24 @@ class DeckDetails extends Component {
       <View style={{ flex: 1 }}>
         <DeckInfo {...deck} />
         <View style={{ flex: 1, alignItems: 'center', paddingTop: 50 }}>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('AddCard', {
-                key: deck.title
-              });
+          <NavigateButton
+            navigation={this.props.navigation}
+            navigateScreen={'AddCard'}
+            navigateParams={{
+              key: deck.title
             }}
-            style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
           >
-            <Text style={styles.btnText}>{Constants.ADD_CARD}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('Quiz', { key: deck.title });
+            {Constants.ADD_CARD}
+          </NavigateButton>
+          <NavigateButton
+            navigation={this.props.navigation}
+            navigateScreen={'Quiz'}
+            navigateParams={{
+              key: deck.title
             }}
-            style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
-            disabled={deck.questions.length === 0}
           >
-            <Text style={styles.btnText}>{Constants.START_QUIZ}</Text>
-          </TouchableOpacity>
+            {Constants.START_QUIZ}
+          </NavigateButton>
           <TextButton onPress={this.deleteDeck} style={{ padding: 10 }}>
             {Constants.DELETE}
           </TextButton>

@@ -6,7 +6,7 @@ import { addCardToDeck } from '../../actions';
 import { addCardToDeckStorage } from '../../utils/api';
 import { lightBlue, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
-import SubmitButton from '../submitbutton/SubmitButton';
+import SubmitButton from '../buttons/SubmitButton';
 
 class AddCard extends Component {
   state = {

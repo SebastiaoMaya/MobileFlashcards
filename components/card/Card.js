@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Constants from '../../utils/constants';
-import TextButton from '../textbutton/TextButton';
+import TextButton from '../buttons/TextButton';
 
 export default class Card extends Component {
   state = {

@@ -68,7 +68,11 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 
 ### SubmitButton
 
-- creates a Touchable opacity button with the onPress and text passed to it
+- creates a Touchable opacity button with the onPress and text passed to it. Used for submit of inputs
+
+### NavigateButton
+
+- creates a Touchable opacity button with the onPress and text passed to it. Used to navigate to other screens
 
 ## Navigators
 

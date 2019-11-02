@@ -5,7 +5,7 @@ import { addDeck } from '../../actions';
 import { submitDeck } from '../../utils/api';
 import { lightBlue, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
-import SubmitButton from '../submitbutton/SubmitButton';
+import SubmitButton from '../buttons/SubmitButton';
 
 class AddDeck extends Component {
   state = {

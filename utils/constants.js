@@ -27,3 +27,9 @@ export const SHOW_ANSWER = 'Show Answer';
 export const SHOW_QUESTION = 'Show Question';
 export const CORRECT = 'Correct';
 export const INCORRECT = 'Incorrect';
+
+//Score
+export const RESTART = 'Restart';
+export const BACK_TO_DECK = 'Back to Deck';
+export const CORRECT_ANSWERS = 'Correct answers ';
+export const OUT_OF = ' out of ';

@@ -7,6 +7,7 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
+import { clearLocalNotification, setLocalNotification } from '../../utils/api';
 import { green, red, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
 import Card from '../card/Card';
@@ -60,6 +61,8 @@ class Quiz extends Component {
       questionNumber: 0,
       numCorrect: 0
     });
+
+    clearLocalNotification().then(setLocalNotification);
 
     this.props.navigation.navigate('Score', { deck, numCorrect });
   };
