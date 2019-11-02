@@ -48,13 +48,29 @@ function parseFetchDecksResults(results) {
   return results === null ? setDummyData() : JSON.parse(results);
 }
 
-export function submitDeck({ deck, key }) {
+export function submitDeck({ key, deck }) {
   return AsyncStorage.mergeItem(
     DECKS_STORAGE_KEY,
     JSON.stringify({
       [key]: deck
     })
   );
+}
+
+export function addCardToDeckStorage({ key, card }) {
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(results => {
+    const data = JSON.parse(results);
+
+    if (data[key]) {
+      data[key].questions = data[key].questions.concat([card]);
+      AsyncStorage.mergeItem(
+        DECKS_STORAGE_KEY,
+        JSON.stringify({
+          [key]: data[key]
+        })
+      );
+    }
+  });
 }
 
 export function removeDeck(key) {

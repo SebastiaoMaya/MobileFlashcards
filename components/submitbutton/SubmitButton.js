@@ -3,13 +3,14 @@ import { Platform, StyleSheet, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { lightBlue, white } from '../../utils/colors';
 
-const SubmitButton = ({ children, onPress, style }) => {
+const SubmitButton = ({ children, onPress, style, disabled }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={
         Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn
       }
+      disabled={disabled}
     >
       <Text style={[styles.submitBtnText, style]}>{children}</Text>
     </TouchableOpacity>

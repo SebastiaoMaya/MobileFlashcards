@@ -15,7 +15,7 @@ const entries = (state = {}, action) => {
     case ADD_DECK:
       return {
         ...state,
-        ...action.deck
+        [action.deck.title]: action.deck
       };
     case DELETE_DECK:
       return Object.keys(state)

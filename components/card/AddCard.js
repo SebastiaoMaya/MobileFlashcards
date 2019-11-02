@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
+import { addCardToDeck } from '../../actions';
+import { addCardToDeckStorage } from '../../utils/api';
 import { lightBlue, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
 import SubmitButton from '../submitbutton/SubmitButton';
@@ -24,27 +26,23 @@ class AddCard extends Component {
     });
   };
 
+  toDeck = () => {
+    const { key } = this.props.navigation.state.params;
+    this.props.navigation.navigate('DeckDetails', { key });
+  };
+
   submit = () => {
-    // const key = timeToString();
-    // const entry = this.state;
-    // const { dispatch } = this.props;
-    // //Update Redux
-    // dispatch(
-    //   addEntry({
-    //     [key]: entry
-    //   })
-    // );
-    // this.setState(() => ({
-    //   run: 0,
-    //   bike: 0,
-    //   swim: 0,
-    //   sleep: 0,
-    //   eat: 0
-    // }));
-    // this.toHome();
-    // //Save to DB
-    // submitEntry({ key, entry });
-    // clearLocalNotification().then(setLocalNotification);
+    const { dispatch } = this.props;
+    const { key } = this.props.navigation.state.params;
+    const { questionInput, answerInput } = this.state;
+    const card = {
+      question: questionInput,
+      answer: answerInput
+    };
+
+    dispatch(addCardToDeck(key, card));
+    addCardToDeckStorage({ key, card });
+    this.toDeck();
   };
 
   render() {
@@ -65,7 +63,10 @@ class AddCard extends Component {
             onChangeText={this.handleAnswerChange}
             style={styles.textInput}
           />
-          <SubmitButton onPress={this.submit}>
+          <SubmitButton
+            onPress={this.submit}
+            disabled={questionInput === '' || answerInput === ''}
+          >
             {Constants.ADD_CARD}
           </SubmitButton>
         </View>

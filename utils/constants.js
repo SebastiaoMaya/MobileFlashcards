@@ -16,3 +16,7 @@ export const START_QUIZ = 'Start Quiz';
 
 //Add Card
 export const ADD_A_CARD = 'Please fill in the following values:';
+
+//Add Deck
+export const ADD_A_DECK = 'Please fill with the deck title';
+export const ADD_DECK = 'Add Deck';
