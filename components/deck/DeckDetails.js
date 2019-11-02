@@ -48,11 +48,12 @@ class DeckDetails extends Component {
               this.props.navigation.navigate('Quiz', { key: deck.title });
             }}
             style={Platform.OS === 'ios' ? styles.iosBtn : styles.androidBtn}
+            disabled={deck.questions.length === 0}
           >
             <Text style={styles.btnText}>{Constants.START_QUIZ}</Text>
           </TouchableOpacity>
           <TextButton onPress={this.deleteDeck} style={{ padding: 10 }}>
-            Delete
+            {Constants.DELETE}
           </TextButton>
         </View>
       </View>

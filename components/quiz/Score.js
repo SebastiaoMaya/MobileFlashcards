@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 
-export default class Score extends Component {
-  render() {
-    return (
-      <View>
-        <Text> textInComponent </Text>
-      </View>
-    );
-  }
-}
+const Score = ({ navigation }) => {
+  const { deck, numCorrect } = navigation.state.params;
+
+  return (
+    <View>
+      <Text>
+        {' '}
+        correct {numCorrect} out of {deck.questions.length}
+      </Text>
+    </View>
+  );
+};
+
+export default Score;

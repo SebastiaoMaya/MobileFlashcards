@@ -9,6 +9,11 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 - npm install
 - npm start
 
+## Tested environments
+
+- iOS simulator (xcode)
+- Android simulator (genymotion)
+
 ## Components
 
 ### DeckList
@@ -60,6 +65,10 @@ This project lets the user play the "mobile flashcards" on the mobile phone: cre
 ### TextButton
 
 - creates a text button with the onPress and text passed to it
+
+### SubmitButton
+
+- creates a Touchable opacity button with the onPress and text passed to it
 
 ## Navigators
 
