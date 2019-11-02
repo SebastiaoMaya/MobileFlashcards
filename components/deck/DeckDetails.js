@@ -2,15 +2,30 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
+import { deleteDeck } from '../../actions';
+import { removeDeck } from '../../utils/api';
 import { lightBlue, white } from '../../utils/colors';
 import * as Constants from '../../utils/constants';
 import TextButton from '../textbutton/TextButton';
 import DeckInfo from './DeckInfo';
 
 class DeckDetails extends Component {
-  deleteDeck = () => {
-    console.log('deleted');
+  toDeckList = () => {
+    this.props.navigation.navigate('DeckList');
   };
+
+  deleteDeck = () => {
+    const { deck, dispatch } = this.props;
+
+    dispatch(deleteDeck(deck.title));
+    removeDeck(deck.title);
+
+    this.toDeckList();
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return typeof nextProps.deck !== 'undefined';
+  }
 
   render() {
     const { deck } = this.props;
